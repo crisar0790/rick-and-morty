@@ -2,7 +2,7 @@
   "name": "rick-and-morty",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https:crisar0790.github.io/rick-and-morty",
+  "homepage": "http://crisar0790.github.io/rick-and-morty",
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@testing-library/jest-dom": "^5.16.4",
