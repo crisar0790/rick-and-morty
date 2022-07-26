@@ -5,6 +5,8 @@ import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import { gql, useLazyQuery } from '@apollo/client';
 
+const Container = styled.div``;
+
 const Message = styled.h2`
     padding-top: 10rem;
     text-align: center;
@@ -81,7 +83,7 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <Container>
             <Navbar />
             {!character && <Message>No character loaded.</Message>}
             <ButtonContainer>
@@ -90,7 +92,7 @@ const Home = () => {
             </ButtonContainer>
             {character && <ChraracterDetail showGenerate={showGenerate} character={character} handleClose={handleClose} loading={loading} />}
             {showHistory && <History handleHistoryClose={handleHistoryClose} history={history} showCharacter={showCharacter} setShowGenerate={setShowGenerate} />}
-        </div>
+        </Container>
     )
 }
 

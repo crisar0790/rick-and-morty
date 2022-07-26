@@ -72,22 +72,22 @@ const Image = styled.img`
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-    width: auto;
-    height: 100%;
+    max-width: 90%;
+    max-height: auto;
     transition: all 0.5s;
     &:hover {
         -moz-box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
         -webkit-box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
         box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
     }
-    ${mobile({width: '100%', height: 'auto'})}    
+    ${mobile({maxWidth: '100%'})}    
 `;
 
 const InfoContainer = styled.div`
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-    background: #d48b02;
+    background: ${props => props.bg === 'Male' ? '#1c7ee6' : props.bg === 'Female' ? '#e61ee6' : '#d48b02'};
     flex: 1;
     padding: 2rem; 
     transition: all 0.5s;
@@ -142,7 +142,7 @@ const ChraracterDetail = ({ showGenerate, character, handleClose, loading }) => 
                                             <ImgContainer>
                                                 <Image src={character.image} />
                                             </ImgContainer>
-                                            <InfoContainer>
+                                            <InfoContainer bg={character.gender}>
                                                 <Name>{character.name}</Name>
                                                 <Info>
                                                     <CharacterID>CHARACTER ID: {character.id}</CharacterID>

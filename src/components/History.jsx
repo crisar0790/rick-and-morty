@@ -42,7 +42,7 @@ const ContainerItem = styled.div`
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-    background: #d48b02;
+    background: ${props => props.bg === 'Male' ? '#1c7ee6' : props.bg === 'Female' ? '#e61ee6' : '#d48b02'};
     display: flex;
     justify-content: left;
     align-items: center;
@@ -92,7 +92,7 @@ const History = ({ handleHistoryClose, history, showCharacter, setShowGenerate }
                 <SubContainer>
                     {
                         history?.map((h, k) => (
-                            <ContainerItem key={k} onClick={() => { showCharacter(h.id); setShowGenerate(true); handleHistoryClose() }}>
+                            <ContainerItem bg={h.gender} key={k} onClick={() => { showCharacter(h.id); setShowGenerate(true); handleHistoryClose() }}>
                                     <Image src={h.image} />
                                     <Name>{h.name}</Name>
                             </ContainerItem>)
