@@ -85,13 +85,27 @@ const Home = () => {
     return (
         <Container>
             <Navbar />
-            {!character && <Message>No character loaded.</Message>}
+            {!history.length && <Message>No character loaded.</Message>}
             <ButtonContainer>
-                <Button onClick={() => { showCharacter(getRandomId()); setShowGenerate(true) }}>GENERATE</Button>
+                <Button onClick={() => {
+                    showCharacter(getRandomId());
+                    setShowGenerate(true)
+                }}>GENERATE</Button>
                 {history.length ? <Button onClick={() => setShowHistory(true)}>HISTORY</Button> : null}
             </ButtonContainer>
-            {character && <ChraracterDetail showGenerate={showGenerate} character={character} handleClose={handleClose} loading={loading} />}
-            {showHistory && <History handleHistoryClose={handleHistoryClose} history={history} showCharacter={showCharacter} setShowGenerate={setShowGenerate} />}
+            {character &&
+                <ChraracterDetail
+                    showGenerate={showGenerate}
+                    character={character}
+                    handleClose={handleClose}
+                    loading={loading}
+                    setCharacter={setCharacter} />}
+            {showHistory &&
+                <History
+                    handleHistoryClose={handleHistoryClose}
+                    history={history}
+                    showCharacter={showCharacter}
+                    setShowGenerate={setShowGenerate} />}
         </Container>
     )
 }

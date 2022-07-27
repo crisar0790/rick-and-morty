@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mobile } from "../responsive"; 
+import { mobile } from "../responsive";
 import { GrClose } from 'react-icons/gr';
 
 const BigContainer = styled.div`
@@ -29,7 +29,7 @@ const Container = styled.div`
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    ${mobile({width: '95%', padding: '2rem'})}
+    ${mobile({ width: '95%', padding: '2rem' })}
 `;
 
 const SubContainer = styled.div`
@@ -87,14 +87,21 @@ const History = ({ handleHistoryClose, history, showCharacter, setShowGenerate }
         <BigContainer>
             <Container>
                 <Top>
-                    <Button onClick={handleHistoryClose}><GrClose style={{fontSize: "24px"}} /></Button>
+                    <Button onClick={handleHistoryClose}><GrClose style={{ fontSize: "24px" }} /></Button>
                 </Top>
                 <SubContainer>
                     {
                         history?.map((h, k) => (
-                            <ContainerItem bg={h.gender} key={k} onClick={() => { showCharacter(h.id); setShowGenerate(true); handleHistoryClose() }}>
-                                    <Image src={h.image} />
-                                    <Name>{h.name}</Name>
+                            <ContainerItem
+                                bg={h.gender}
+                                key={k}
+                                onClick={() => {
+                                    showCharacter(h.id);
+                                    setShowGenerate(true);
+                                    handleHistoryClose()
+                                }}>
+                                <Image src={h.image} />
+                                <Name>{h.name}</Name>
                             </ContainerItem>)
                         )
                     }

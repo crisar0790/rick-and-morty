@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { mobile } from "../responsive"; 
 import { GrClose } from 'react-icons/gr';
@@ -66,21 +66,22 @@ const ImgContainer = styled.div`
     flex: 1;
     display: flex;
     justify-content: left;
+    ${mobile({width: '100%'})}
 `;
 
 const Image = styled.img`
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-    max-width: 90%;
-    max-height: auto;
+    width: 90%;
+    height: auto;
     transition: all 0.5s;
     &:hover {
         -moz-box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
         -webkit-box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
         box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.75);
     }
-    ${mobile({maxWidth: '100%'})}    
+    ${mobile({width: '100%'})}    
 `;
 
 const InfoContainer = styled.div`
@@ -123,7 +124,14 @@ const Item2 = styled.span`
     ${mobile({paddingLeft: '0.5rem'})}  
 `;
 
-const ChraracterDetail = ({ showGenerate, character, handleClose, loading }) => {
+const ChraracterDetail = ({ showGenerate, character, handleClose, loading, setCharacter }) => {
+
+    useEffect(() => {
+        return () => {
+            setCharacter(null);
+        }
+    })
+
     return (
         <Outside>
             {
